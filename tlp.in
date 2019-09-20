@@ -173,6 +173,7 @@ parse_args () { # parse command-line arguments
 # --- MAIN
 
 read_defaults
+read_customization
 parse_args "$@"
 parse_args4config "$@"
 check_tlp_enabled 1 || exit 1

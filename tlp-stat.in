@@ -206,6 +206,7 @@ add_sbin2path
 
 # check for and read conffile
 read_defaults; conf_present=$?
+read_customization
 parse_args "$@"
 parse_args4config "$@"
 : ${needs_root_priv:=1}

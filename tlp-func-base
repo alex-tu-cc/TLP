@@ -11,16 +11,16 @@
 
 readonly TLPVER="1.3.0-alpha.0"
 
-readonly CONFFILE=@TLP_CONF@
-readonly RUNDIR=@TLP_RUN@
-readonly VARDIR=@TLP_VAR@
+readonly CONFFILE=/etc/default/tlp
+readonly RUNDIR=/run/tlp
+readonly VARDIR=/var/lib/tlp
 
 readonly FLOCK=flock
 readonly HDPARM=hdparm
 readonly LAPMODE=laptop_mode
 readonly LOGGER=logger
 readonly MODPRO=modprobe
-readonly TPACPIBAT=@TLP_TLIB@/tpacpi-bat
+readonly TPACPIBAT=/usr/share/tlp/tpacpi-bat
 readonly UDEVADM=udevadm
 
 readonly LOCKFILE=$RUNDIR/lock
