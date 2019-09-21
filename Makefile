@@ -16,6 +16,7 @@ TLP_MAN    ?= /usr/share/man
 TLP_META   ?= /usr/share/metainfo
 TLP_RUN    ?= /run/tlp
 TLP_VAR    ?= /var/lib/tlp
+TLP_CUSTOMIZE    ?= /etc/default/tlp.d
 
 # Catenate DESTDIR to paths
 _SBIN  = $(DESTDIR)$(TLP_SBIN)
