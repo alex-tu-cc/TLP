@@ -1,0 +1,191 @@
+tlp (1.3.0~alpha.0-1) unstable; urgency=low
+
+  * Track development version
+
+  [Thomas Koch]
+
+ -- Thomas Koch <linrunner@gmx.net>  Tue, 11 Jun 2019 17:42:48 +0200
+
+tlp (1.2.2-1) unstable; urgency=low
+
+  * New upstream version 1.2.2 (bugfix release)
+
+  [Thomas Koch]
+  * debian/rules: remove override_dh_auto_install,
+    TLP_WITH_SYSTEMD=1 TLP_WITH_ELOGIND=1 is default now
+  * debian/postinst,postrm: remove mask/unmask of upstart jobs
+  * debian/tlp.install: add /var/lib/tlp
+
+ -- Thomas Koch <linrunner@gmx.net>  Sat, 04 May 2019 18:42:51 +0200
+
+tlp (1.2.1-1) unstable; urgency=medium
+
+  * Merge changes from Debian
+
+  * [9c53a90] New upstream version 1.2 (LP: #1814083)
+  * [c273e03] New upstream version 1.2.1 (bugfix release)
+
+  [ Thomas Koch ]
+  * [047ba95] Remove all pm-utils related stuff
+  * [dcfe4a1] Demote linux-tools Recommends to Suggests and prefer generic
+    (LP: #1783455)
+  * [0bd7f4b] debian/install: reflect func.d changes
+  * [6148158] New command tlp-rdw
+  * [c4d9030] debian/tlp.docs: README --> README.md
+  * [e6fc28f] debian/control: use https for Homepage field
+
+  [ Raphaël Halimi ]
+  * [de3c365] Bump Standards-Version to 4.3.0
+  * [d180097] debian/copyright: update copyrights years
+  * [35e4c0a] debian/copyright: add AppStream metadata file license (MIT)
+  * [f1798c6] Remove obsolete lintian override about unusual WantedBy target
+    (fixed in lintian 2.5.118)
+  * [4178f68] Include upstream elogind sleep hook
+
+ -- Thomas Koch <linrunner@gmx.net>  Thu, 04 Apr 2019 08:24:42 +0200
+
+tlp (1.1-2) unstable; urgency=medium
+
+  Merge changes from Debian.
+
+  [Raphaël Halimi]
+  * [59b316a] Demote smartmontools from Recommends to Suggests
+    smartmontools dependencies end up pulling in a mail server, which may
+    not be wanted on desktop installations (LP: 1758798)
+  * [56bc43f] debian/control: cosmetic changes
+  * [a78888a] Override lintian warning about unusual WantedBy target
+  * [7b94358] Override lintian warning about missing test suite
+
+  [Thomas Koch]
+  * [b407a57] debian/control: point Vcs-* to github.com/linrunner/tlp
+
+ -- Thomas Koch <linrunner@gmx.net>  Tue, 10 Apr 2018 07:11:42 +0200
+
+tlp (1.1-1) unstable; urgency=low
+
+  [Thomas Koch]
+  * New upstream version
+  * Make it work with Ubuntu 16.04 again:
+    - debian/control: Build-Depends: debhelper (>= 9), dh-systemd
+    - debian/rules: dh_installinit --onlyscripts
+    - debian/changelog: change Maintainer
+  * Use upstream de.linrunner.tlp.metainfo.xml
+
+ -- Thomas Koch <linrunner@gmx.net>  Wed, 24 Jan 2018 06:51:42 +0100
+
+tlp (1.0-1) unstable; urgency=medium
+
+  * [b811fae] New upstream version 1.0 (Closes: #850293)
+
+  [ Thomas Koch ]
+  * [639a7fe] debian/copyright,tlp.init: update copyright year
+  * [a5de719] debian/tlp.postinst,postrm: tlp-nop moved to /usr/share/tlp
+  * [00a4beb] debian/tlp.manpages: install everything in man/
+
+  [ Raphaël Halimi ]
+  * [b5691d7] debian/rules: use dh7 syntax
+  * [f6a1c00] debian/tlp.docs: remove changelog
+  * [faa8223] Use upstream init script
+  * [5a705f1] Bump Standards-Version to 4.0.1, no changes needed
+  * [070c629] Get rid of dh-systemd build-dep
+  * [d54e072] Recommend linux-cpupower on non-Ubuntu
+  * [9befab8] Add AppStream metadata (Closes: #838702)
+  * [4c3ff3f] Link tlp-rdw documentation directory to tlp
+  * [3de1e38] Add debian/README.Debian
+  * [65e57ae] debian/gbp.conf: add spaces around equal signs
+
+ -- Raphaël Halimi <raphael.halimi@gmail.com>  Mon, 21 Aug 2017 17:42:04 +0200
+
+tlp (0.9-3) unstable; urgency=low
+
+  * [be57ce6] Fix invocation of dh_gencontrol with $(SUBSTVARS)
+    Previous invocation lacked a double-dash before the options meant for
+    dpkg-gencontrol, so dh_gencontrol didn't actually add the substitution
+    variable (eg. linux-tools) to Recommends when building on Ubuntu.
+    Thanks to Thomas Koch for spotting this.
+
+ -- Raphaël Halimi <raphael.halimi@gmail.com>  Wed, 25 Jan 2017 01:35:31 +0100
+
+tlp (0.9-2) unstable; urgency=low
+
+  * [b8cbaa7] Recommend linux-tools on Ubuntu only (Closes: #852204)
+  * [da84365] Add missing dependency on lsb-base
+
+ -- Raphaël Halimi <raphael.halimi@gmail.com>  Sun, 22 Jan 2017 23:18:29 +0100
+
+tlp (0.9-1) unstable; urgency=medium
+
+  * New upstream version 0.9
+
+  [ Raphaël Halimi ]
+  * Merge changes from upstream's debian/current branch
+
+  [Thomas Koch]
+  * debian/rules: add 'make clean' to clean target
+  * debian/tlp.maintscript:
+    - add rm_conffile /etc/acpi/events/thinkpad-radiosw,
+      /etc/acpi/thinkpad-radiosw.sh (upstream removed feature)
+  * debian/tlp.postinst,postrm:
+    - upstream moved tlp-nop to /usr/share/tlp-pm/
+    - use deb-systemd-helper to mask/unmask systemd-rfkill.service
+  * debian/control:
+    - Standards-Version: 3.9.8
+    - point Vcs-git to https://...
+  * debian/watch: adapt to GitHub releases
+
+ -- Raphaël Halimi <raphael.halimi@gmail.com>  Tue, 13 Sep 2016 04:43:28 +0200
+
+tlp (0.8-1) unstable; urgency=low
+
+  [ Thomas Koch ]
+  * New upstream release
+  * debian/control:
+    - Add Recommends: linux-tools
+    - New Maintainer (Raphaël Halimi)
+  * debian/tlp.maintscript (new):
+    - add rm_conffile /etc/bash_completion.d/tlp
+      (upstream moved file to /usr/share/bash-completion/completions/)
+
+  [ Raphaël Halimi ]
+  * Remove debian/patches
+
+ -- Raphaël Halimi <raphael.halimi@gmail.com>  Tue, 11 Aug 2015 19:53:19 +0200
+
+tlp (0.7-1) unstable; urgency=low
+
+  [ Thomas Koch ]
+  * New upstream release
+  * Add patch (from upstream):
+    - 0001-Issue-124-tlp-recalibrate-fix-exitcode-check.patch
+  * debian/rules: support for non-systemd installs w/ pm-utils
+  * debian/control:
+    - Add depends: pciutils, usbutils
+    - Remove depends: util-linux (essential package)
+    - Long description updated
+  * debian/tlp.init: add option "status"
+  * debian/tlp.postinst: consider pm-utils dirs not present
+
+ -- Thomas Koch <linrunner@gmx.net>  Thu, 26 Feb 2015 18:51:42 +0100
+
+tlp (0.6-1) unstable; urgency=low
+
+  [ Thomas Koch ]
+  * New upstream release
+  * debian/rules: systemd support
+  * debian/control:
+    - Remove depends: pm-utils
+    - Add depends: hdparm, iw | wireless-tools, rfkill, util-linux
+    - Add suggests: acpi-call-dkms
+  * debian/tlp.postinst/postrm: mask/unmask systemd-rfkill@.service
+  * debian/patches/* removed (changes are in upstream now)
+
+  [ Andreas Tille ]
+  * Add Build-Depends: dh-systemd
+
+ -- Thomas Koch <linrunner@gmx.net>  Sat, 11 Oct 2014 22:42:24 +0200
+
+tlp (0.5-1) unstable; urgency=low
+
+  * Initial Debian package submission (Closes: #711471).
+
+ -- Thomas Koch <linrunner@gmx.net>  Sun, 31 Aug 2014 19:12:42 +0200

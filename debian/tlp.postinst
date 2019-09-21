@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+SYD="/lib/systemd/system"
+ESY="/etc/systemd/system"
+NUL="/dev/null"
+SRV="systemd-rfkill"
+
+case "$1" in
+    configure)
+        # Mask conflicting systemd services
+        for i in $(ls ${SYD} 2> ${NUL} | egrep "${SRV}"); do
+            deb-systemd-helper mask $i 2> ${NUL} || true
+        done
+        ;;
+
+esac
