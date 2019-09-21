@@ -366,7 +366,12 @@ read_customization () { # read customized config file
 }
 
 read_confs () { # read all config files
-    return read_defaults & read_customization
+    if read_defaults && read_customization;then
+        return 0
+    else
+        return $resule
+    fi
+
 }
 
 print_conf() { # print runtime conf based on default and customized configuration.

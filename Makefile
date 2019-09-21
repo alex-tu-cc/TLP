@@ -41,6 +41,7 @@ SED = sed \
 	-e "s|@TLP_FLIB@|$(TLP_FLIB)|g" \
 	-e "s|@TLP_ULIB@|$(TLP_ULIB)|g" \
 	-e "s|@TLP_CONF@|$(TLP_CONF)|g" \
+	-e "s|@TLP_CUSTOMIZE@|$(TLP_CUSTOMIZE)|g" \
 	-e "s|@TLP_RUN@|$(TLP_RUN)|g"   \
 	-e "s|@TLP_VAR@|$(TLP_VAR)|g"
 
